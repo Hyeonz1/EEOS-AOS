@@ -22,10 +22,9 @@ jobs:
           cache: gradle
           
       - name: Access to secrets
-        run: |
-          echo "SLACK_OAUTH_KEY=\"$SLACK_OAUTH_KEY\"" > ./AOS/local.properties
-          env:
-            SLACK_OAUTH_KEY: ${{secrets.SLACK_OAUTH_KEY}}
+        env:
+          SLACK_OAUTH_KEY: ${{secrets.SLACK_OAUTH_KEY}}
+        run: echo "SLACK_OAUTH_KEY=\"$SLACK_OAUTH_KEY\"" > ./AOS/local.properties
             
       - name: Grant execute permission for gradlew
         run: chmod +x ./AOS/gradlew
