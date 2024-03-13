@@ -5,7 +5,7 @@ on:
     paths:
       - "AOS/**"
       - "**.yml"
-    branches: [ "main" ]
+    branches: [ "main", "**/ci-setting" ]
 
 jobs:
   build:
