@@ -24,7 +24,6 @@ jobs:
       - name: Access to secrets
         run: |
           echo "SLACK_OAUTH_KEY=\"$SLACK_OAUTH_KEY\"" > ./AOS/local.properties
-          shell: bash
           env:
             SLACK_OAUTH_KEY: ${{secrets.SLACK_OAUTH_KEY}}
             
