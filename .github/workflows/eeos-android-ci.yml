@@ -9,17 +9,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    env:
-      STORE_FILE_DEBUG: ${{ secrets.STORE_FILE_DEBUG }}
-      STORE_PASSWORD_DEBUG: ${{ secrets.STORE_PASSWORD_DEBUG }}
-      KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
-      KEY_PASSWORD_DEBUG: ${{ secrets.KEY_PASSWORD_DEBUG }}
-      STORE_FILE: ${{ secrets.STORE_FILE }}
-      STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v3
@@ -50,4 +40,13 @@ jobs:
         run: chmod +x ./AOS/gradlew
       - name: Build with Gradle
         working-directory : ./AOS
+        env:
+          STORE_FILE_DEBUG: ${{ secrets.STORE_FILE_DEBUG }}
+          STORE_PASSWORD_DEBUG: ${{ secrets.STORE_PASSWORD_DEBUG }}
+          KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
+          KEY_PASSWORD_DEBUG: ${{ secrets.KEY_PASSWORD_DEBUG }}
+          STORE_FILE: ${{ secrets.STORE_FILE }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: ./gradlew build
