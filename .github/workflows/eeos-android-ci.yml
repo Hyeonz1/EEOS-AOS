@@ -27,11 +27,23 @@ jobs:
 
       - name: Append gradle.properties file
         env:
-          DEBUG_KEY: ${{secrets.DEBUG_KEY}}
-          RELEASE_KEY: ${{secrets.RELEASE_KEY}}
+          STORE_FILE_DEBUG: ${{ secrets.STORE_FILE_DEBUG }}
+          STORE_PASSWORD_DEBUG: ${{ secrets.STORE_PASSWORD_DEBUG }}
+          KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
+          KEY_PASSWORD_DEBUG: ${{ secrets.KEY_PASSWORD_DEBUG }}
+          STORE_FILE: ${{ secrets.STORE_FILE }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run:
-          echo "DEBUG_KEY=\"$DEBUG_KEY\"" > ./AOS/gradle.properties
-          echo "RELEASE_KEY=\"$RELEASE_KEY\"" > ./AOS/gradle.properties
+          echo "STORE_FILE_DEBUG=\"$STORE_FILE_DEBUG\"" > ./AOS/gradle.properties
+          echo "STORE_PASSWORD_DEBUG=\"$STORE_PASSWORD_DEBUG\"" > ./AOS/gradle.properties
+          echo "KEY_ALIAS_DEBUG=\"$KEY_ALIAS_DEBUG\"" > ./AOS/gradle.properties
+          echo "KEY_PASSWORD_DEBUG=\"$KEY_PASSWORD_DEBUG\"" > ./AOS/gradle.properties
+          echo "STORE_FILE=\"$STORE_FILE\"" > ./AOS/gradle.properties
+          echo "STORE_PASSWORD=\"$STORE_PASSWORD\"" > ./AOS/gradle.properties
+          echo "KEY_ALIAS=\"$KEY_ALIAS\"" > ./AOS/gradle.properties
+          echo "KEY_PASSWORD=\"$KEY_PASSWORD\"" > ./AOS/gradle.properties
 
       - name: Create Keystore File
         env:
