@@ -38,14 +38,14 @@ jobs:
       - name: Restore gradle.properties
         run: |
           mkdir -p ~/.gradle/
-          echo "STORE_FILE_DEBUG: ${{ secrets.STORE_FILE_DEBUG }}" >> ./AOS/.gradle/gradle.properties
-          echo "STORE_PASSWORD_DEBUG: ${{ secrets.STORE_PASSWORD_DEBUG }}" >> ./AOS/.gradle/gradle.properties
-          echo "KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}" >> ./AOS/.gradle/gradle.properties
-          echo "KEY_PASSWORD_DEBUG: ${{ secrets.KEY_PASSWORD_DEBUG }}" >> ./AOS/.gradle/gradle.properties
-          echo "STORE_FILE: ${{ secrets.STORE_FILE }}" >> ./AOS/.gradle/gradle.properties
-          echo "STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}" >> ./AOS/.gradle/gradle.properties
-          echo "KEY_ALIAS: ${{ secrets.KEY_ALIAS }}" >> ./AOS/.gradle/gradle.properties
-          echo "KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}" >> ./AOS/.gradle/gradle.properties
+          echo "STORE_FILE_DEBUG: ${{ secrets.STORE_FILE_DEBUG }}" >> ./AOS/gradle.properties
+          echo "STORE_PASSWORD_DEBUG: ${{ secrets.STORE_PASSWORD_DEBUG }}" >> ./AOS/gradle.properties
+          echo "KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}" >> ./AOS/gradle.properties
+          echo "KEY_PASSWORD_DEBUG: ${{ secrets.KEY_PASSWORD_DEBUG }}" >> ./AOS/gradle.properties
+          echo "STORE_FILE: ${{ secrets.STORE_FILE }}" >> ./AOS/gradle.properties
+          echo "STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}" >> ./AOS/gradle.properties
+          echo "KEY_ALIAS: ${{ secrets.KEY_ALIAS }}" >> ./AOS/gradle.properties
+          echo "KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}" >> ./AOS/gradle.properties
       
       - name: Grant execute permission for gradlew
         run: chmod +x ./AOS/gradlew
