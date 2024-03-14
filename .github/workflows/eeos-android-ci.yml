@@ -20,10 +20,18 @@ jobs:
           distribution: 'temurin'
           cache: gradle
           
-      - name: Access to Slack Oauth Keys
+      - name: Make local.properties file
         env:
           SLACK_OAUTH_KEY: ${{secrets.SLACK_OAUTH_KEY}}
         run: echo "SLACK_OAUTH_KEY=\"$SLACK_OAUTH_KEY\"" > ./AOS/local.properties
+
+      - name: Append gradle.properties file
+        env:
+          DEBUG_KEY: ${{secrets.DEBUG_KEY}}
+          RELEASE_KEY: ${{secrets.RELEASE_KEY}}
+        run:
+          echo "DEBUG_KEY=\"$DEBUG_KEY\"" > ./AOS/gradle.properties
+          echo "RELEASE_KEY=\"$RELEASE_KEY\"" > ./AOS/gradle.properties
 
       - name: Create Keystore File
         env:
@@ -40,13 +48,4 @@ jobs:
         run: chmod +x ./AOS/gradlew
       - name: Build with Gradle
         working-directory : ./AOS
-        env:
-          STORE_FILE_DEBUG: ${{ secrets.STORE_FILE_DEBUG }}
-          STORE_PASSWORD_DEBUG: ${{ secrets.STORE_PASSWORD_DEBUG }}
-          KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
-          KEY_PASSWORD_DEBUG: ${{ secrets.KEY_PASSWORD_DEBUG }}
-          STORE_FILE: ${{ secrets.STORE_FILE }}
-          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: ./gradlew build
